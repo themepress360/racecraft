@@ -1,0 +1,35 @@
+<html>
+
+<body>
+<script>
+
+var url_string ="https://www.redirect_url.com/?transactionId=tpEkkmWCsgZFGz9hcj88qeyreXEZY&orderId=tpEkkmWCsgZFGz9hcj88qeyreXEZY"
+
+var url = new URL(url_string);
+var order_id  = url.searchParams.get("orderId");
+console.log(order_id);
+
+
+
+var order_url = "https://connect.squareupsandbox.com/v2/orders/" + order_id;
+console.log(order_url)
+
+fetch(order_url, {
+	headers: new Headers({
+        'Authorization': 'Bearer EAAAELMmncmx1ygTlerwMsoobNuAIzyTZnM7tBc_AzLtxPPPXp_zLtCoF9-x', 
+        'Content-Type': 'application/json'
+    })
+})
+    .then((response) => {response.json()
+						  return(response)
+	})
+	.then((data) => {data.json()
+						 
+						  console.log(data)
+	})
+
+
+
+</script>
+
+</body>
